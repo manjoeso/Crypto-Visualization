@@ -1,20 +1,24 @@
-// ----------------------------------- // 
-              BACKGROUND 
-// ----------------------------------- // 
+// --------------------------------------------------- // 
+                     BACKGROUND 
+// --------------------------------------------------- // 
 
-This project will be a datavisualization of the top 5 crypto 
-currencies: Bitcoin, Etherium, Cardano, Tether, and Solana.
-There will be a clickable list of these 5 currencies as a bar
-on the right side of the page. When one of the currencies is clicked,
-the display in the middle will be updated with a chart for that specific coin.
+This project will be a datavisualization of the 
+top 5 crypto currencies: Bitcoin, Etherium, Cardano,
+Tether, and Solana. There will be a clickable list of
+these 5 currencies as a bar on the right side of the 
+page. When one of the currencies is clicked, the display
+in the middle will be updated with a chart for that 
+specific coin.
 
-The chart will be a line graph displaying time on the x-axis, and price (in $USD) 
-on the y-axis. The time will span from when the coin was created to the current 
-date. When you hover over the line graph, it will show the max price and date of the max price.
+The chart will be a line graph displaying time on the
+x-axis, and price (in $USD) on the y-axis. The time will 
+span from when the coin was created to the current date. 
+When you hover over the line graph, it will show the max 
+price and date of the max price.
 
-// ----------------------------------- // 
-         FUNCTIONALITY & MVPS 
-// ----------------------------------- // 
+// --------------------------------------------------- // 
+                 FUNCTIONALITY & MVPS 
+// --------------------------------------------------- // 
 
 In Cryptocurrency data visualization, users will be able to:
 
@@ -43,11 +47,12 @@ what the site's functionality is.
 : A production README.
 
 
-// ----------------------------------- // 
-      Technologies, Libraries APIs 
-// ----------------------------------- // 
+// --------------------------------------------------- // 
+               Technologies, Libraries APIs 
+// --------------------------------------------------- // 
 
 : An API (https://coinmarketcap.com/api/) to import live and 
 hisotrical data from a crypto currency exchange.
 : Webpack to bundle and transpile the source JavaScript code.
-: D3 to bind data from API, and create the chart displaying the data.
+: D3 to bind data from API, and create the chart displaying 
+the data.
