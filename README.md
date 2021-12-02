@@ -57,9 +57,9 @@ hisotrical data from a crypto currency exchange.
 the data.
 -Potentially may need a backend? Not sure.
 
-// ---------------------------------------------- // 
+// ------------------------------------------ // 
             Implementation Timeline 
-// ---------------------------------------------- // 
+// ------------------------------------------ // 
 
 Friday Afternoon & Weekend
 -Layout basica HTML structure of the page, populate with bare content
