@@ -28,7 +28,6 @@ current date.
 will update the display chart.
 -When hovering over the line graph, can see the all-time 
 max price of the coin, and the date/time of that maximum price.
--(POTENTIAL BONUS) Make some sort of animation
 
         --------- Bonus Functionality ---------
 -(POTENTIAL BONUS) Make some sort of animation when clicking 
