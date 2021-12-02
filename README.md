@@ -46,9 +46,9 @@ what the site's functionality is.
 -A production README.
 
 
-// ---------------------------------------------- // 
+// ------------------------------------------ // 
             Technologies, Libraries APIs 
-// ---------------------------------------------- // 
+// ------------------------------------------ // 
 
 -An API (https://coinmarketcap.com/api/) to import live and 
 hisotrical data from a crypto currency exchange.
