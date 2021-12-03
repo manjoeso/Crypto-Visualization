@@ -1,0 +1,18 @@
+// srcss can define vars 
+// can just use css here
+// nesting selectors
+// https://sass-lang.com/documentation
+
+// can make a style sheet that imports all style sheets, and import that here. 
+// remember this is the entry file that webpack will be looking in ! 
+
+
+// EXAMPLE FOR OTHER CSS SHEETS
+
+// $special_color = hex code for color; - goes in example.scss
+@import "./styles/reset.scss";
+@import "./styles/example.scss";
+
+// h1 {
+//     color: $special_color
+// }

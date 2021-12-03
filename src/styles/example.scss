@@ -1,0 +1,12 @@
+body {
+    h1 {
+        color: green;
+    }
+}
+
+// can nest selectors inside different selectors
+
+// same as 
+body h1 {
+    color: green;
+}
