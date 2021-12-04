@@ -1,12 +1,57 @@
-body {
-    h1 {
-        color: green;
-    }
-}
+// body {
+//     h1 {
+//         color: green;
+//     }
+// }
 
 // can nest selectors inside different selectors
 
 // same as 
-body h1 {
-    color: green;
+#main-header  {
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: 38pt;
 }
+
+#sidebar-header {
+    display: flex;
+    justify-content: left;
+    font-size: 38pt;
+    width: 100px;
+
+}
+
+li {
+    color: green;
+    font-size: 24pt;
+    list-style-type: square;
+}
+
+div.main {
+    height: auto;
+    width: 100%;
+    background-color: white;
+}
+
+div.sidebar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    // width: 33%;
+    background-color: powderblue;
+}
+
+// div.main-display {
+//     height: auto;
+//     width: 33%;
+//     background-color: powderblue;
+// }
+
+
+// div.bar {
+//     height: auto;
+//     width: 33%;
+//     background-color: powderblue;
+// }
