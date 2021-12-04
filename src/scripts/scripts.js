@@ -6,13 +6,11 @@ window.app = app;
 
 var request = new XMLHttpRequest()
 
-request.open('GET', "https://ghibliapi.herokuapp.com/films", true)
+request.open('GET', "https://api.cryptowat.ch/markets/kraken/btceur/price", true)
 
 request.onload = function() {
     var data = JSON.parse(this.response)
-    data.forEach(movie => {
-        console.log(movie.title)
-    })
+    console.log(data);
 }
 
 request.send();
