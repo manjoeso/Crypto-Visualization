@@ -4,33 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/reset.css" />
     <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <title>Crypto Visualization</title>
 </head>
 <body>
     <div id="root">
         <h1 id="main-header">Crypto Visualization</h1>
-        <div class="sidebar">
-            <div>
-                <h1 id="sidebar-header">Coins</h1>
+        <div class="window">
+            <!-- <div class="sidebar"> -->
+                <!-- <div>
+                    <h1 id="sidebar-header">Coins</h1>
+                </div> -->
+                <!-- <div>
+                    <ul>
+                        <li>Bitcoin</li>
+                        <li>Etherium</li>
+                        <li>Cardano</li>
+                        <li>Solana</li>
+                        <li>Doge</li>
+                    </ul> 
+                </div> -->
+            <!-- </div> -->
+            <div id="d3-display" class="main-display">
+                <h1>D3.js Chart</h1>
+                <!-- <div> -->
+                    <!-- <h1 id="main">Graphical Display</h1> -->
+                <!-- </div> -->
             </div>
-            <div>
-                <ul>
-                    <li>Bitcoin</li>
-                    <li>Etherium</li>
-                    <li>Cardano</li>
-                    <li>Solana</li>
-                    <li>Doge</li>
-                </ul>
-            </div>
+            <script src="./dist/main.js"></script>
+            <!-- <div class="desc-bar"> -->
+                <!-- <div>
+                    <h1 id="desc-bar-header">Description Bar</h1>
+                </div> -->
+            <!-- </div>  -->
         </div>
-        <div class="main-display">
-
-        </div>
-        <div class="desc-bar">
-            
-        </div> 
     </div>
 </body>
 </html>
