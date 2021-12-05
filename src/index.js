@@ -17,15 +17,30 @@ const dataset1 = [
     [100, 140]
 ];
 
-const width = 1000;
-const height = 750;
-const margin = 50;
+// const width = 1000;
+// const height = 750;
+// const margin = 50;
 
-var svg = d3.select(#'d3-display')
-    .append('svg')
-    .attr('height', height - margin)
-    .attr('width', width - margin);
+// var svg = d3.select('#d3-display')
+//     .append('svg')
+//     .attr('height', height - margin)
+//     .attr('width', width - margin);
 
+// // will have to somehow compute max values here, and use in x and y scale
+
+// var xScale = d3.scaleLinear().domain([0,100]).range([0, width])
+// var yScale = d3.scaleLinear().domain([0,200]).range([height, 0]);
+
+
+// Create Title
+
+// svg.append('text')
+//     .attr('x', width/2 + 100)
+//     .attr('y', 100)
+//     .attr('text-anchor', 'middle')
+//     .style('font-family', 'Helvetica')
+//     .style('font-size', 20)
+//     .text('line Chart');
 // const data = [ // source data, can make array just like this with name -> date, score -> price
 //     { name: 'Simon', score: 80},
 //     { name: 'Mary', score: 90},
