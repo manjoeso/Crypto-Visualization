@@ -4,41 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./dist/reset.css" />
     <link rel="stylesheet" href="./dist/main.css" />
-    
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <title>Crypto Visualization</title>
+    <script src="./dist/main.js"></script>
 </head>
 <body>
     <div id="root">
         <h1 id="main-header">Crypto Visualization</h1>
         <div class="window">
-            <!-- <div class="sidebar">
-                <div>
-                    <h1 id="sidebar-header">Coins</h1>
+            <div id="sidebar">
+                <div id='sidebar-header'>
+                    <h2>Coins</h1>
                 </div>
-                <div>
-                    <ul>
-                        <li>Bitcoin</li>
-                        <li>Etherium</li>
-                        <li>Cardano</li>
-                        <li>Solana</li>
-                        <li>Doge</li>
-                    </ul> 
-                </div> 
-            </div>  -->
-            <div id="d3-display">
-                <div>
-                    <h1 id="main"></h1> 
-                </div>
-            </div>
-            <script src="./dist/main.js"></script>
-            <!-- <div class="desc-bar"> 
-                <div>
-                    <h1 id="desc-bar-header">Description Bar</h1>
-                </div> 
-            </div>  -->
+                <ul>
+                    <li id="BTC">Bitcoin</li>
+                    <li id="ETH">Etherium</li>
+                    <li id="ADA">Cardano</li>
+                    <li>Solana</li>
+                    <li>Doge</li>
+                </ul> 
+            </div> 
+            <div id="d3-display"></div>
         </div>
     </div>
 </body>
