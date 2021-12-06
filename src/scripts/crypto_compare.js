@@ -1,26 +1,25 @@
 
-console.log("Working");
 
 
-let url = "https://min-api.cryptocompare.com/data/dayAvg?fsym=BTC&tsym=USD?tots"
+// let url = "https://min-api.cryptocompare.com/data/dayAvg?fsym=BTC&tsym=USD?tots"
 
-var request = new XMLHttpRequest() 
+// var request = new XMLHttpRequest() 
 
-request.open('GET', url, true)
+// request.open('GET', url, true)
 // request.setRequestHeader('Accept', 'application/json')
-request.setRequestHeader('authorization', 'Apikey 9BE11048-8939-47D8-8CEC-22E693B66137')
+// request.setRequestHeader('authorization', 'Apikey 9BE11048-8939-47D8-8CEC-22E693B66137')
 
 // if (request.status >= 200 && request.status < 400) {
-    console.log(request.status)
-    request.onload = function() {
+    // console.log(request.status)
+    // request.onload = function() {
         // let btcPrices = [];
         // let btcDates = [];
         // window.btcPrices = btcPrices;
         // window.btcDates = btcDates;
 
-        var data = JSON.parse(this.response)
+        // var data = JSON.parse(this.response)
         // window.data = data;
-        console.log(data);
+        // console.log(data);
 
         // var priceDateHash = {};
 
@@ -33,6 +32,6 @@ request.setRequestHeader('authorization', 'Apikey 9BE11048-8939-47D8-8CEC-22E693
         //     priceDateHash[btcDates[i]] = btcPrices[i];
         // }
         // window.priceDateHash = priceDateHash;
-    }
+    // }
 // }
-    request.send();
+    // request.send();

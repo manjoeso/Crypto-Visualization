@@ -73,7 +73,7 @@ li {
 
 div.main {
   height: auto;
-  width: 75%;
+  width: 100%;
   background-color: white;
 }
 
@@ -83,15 +83,4 @@ div.sidebar {
   flex-direction: column;
   height: auto;
   background-color: powderblue;
-}
-
-.window{
-  display: flex;
-  justify-content: center;
-}
-#d3-display{
-  display: flex;
-  justify-content: center;
-  border: 1pt solid black;
-  width: 75%
 }
