@@ -11,8 +11,6 @@
   width: auto;
 }
 
-
-
 #sidebar {
   text-align: center;
   display: flex;
@@ -47,6 +45,16 @@ li {
   height: auto;
 }
 
+/* nav {
+  display: flex;
+  flex-direction: row;
+}
+
+nav div {
+  display: flex;
+  flex-direction: row-reverse;
+  float: right;
+} */
 .window{
   display:flex;
   justify-content: space-between;
@@ -81,4 +89,13 @@ div.window{
   position: absolute;
   top: 0;
   left: 0;
+}
+
+p {
+  color: white;
+}
+
+.rightbar {
+  width: 20%;
+  /* border: 1pt solid #39FF14; */
 }
