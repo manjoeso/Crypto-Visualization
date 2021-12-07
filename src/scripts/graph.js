@@ -1,40 +1,41 @@
 const app = document.getElementById('root')
-
-console.log("Working");
-
 const axios = require('axios');
-
 // make pojo with keys as method, values 
-
 // could also pack into a class
 // export at the end
+// class Graph {
+//     constructor(coin){
+//         this.coin = coin;
+//     }
+// create pojo with keys as functions, ajaz twitter and TTT
 function generateGraph(coin){
     let date = new Date(); // returns date object with current date and time 
     date = date.toISOString();
     let period_id = "1DAY"
-    let time_start = "2020-09-01T00:00:00" 
-    let time_end = date // current date
-    let limit = "500"
+    let time_start = "2020-10-01T00:00:00" 
+    let time_end = "2021-01-01T00:00:00"  // current date
+    // let limit = "100"
     let currentCoin = "BTC"
-    // axios({
-    //     method: 'get',
-    //     url: `https://rest.coinapi.io/v1/exchangerate/${currentCoin}/USD/history?period_id=${period_id}&time_start=${time_start}&time_end=${time_end}&limit=${limit}`,
-    //     headers: {
-    //         'X-CoinAPI-Key': '9BE11048-8939-47D8-8CEC-22E693B66137'
-    //     },
-    //     data: {
-    //     }
-    // }).then(apiObject => {
-            let coinPrices = [30000, 38000, 41000, 45000, 23000, 32000];
-            let coinDates =  ['2015-04-01', '2016-09-01','2016-10-02', '2016-11-03', '2016-12-04', '2017-09-01'];
-                // apiObject.data.forEach(el=>{
-                //     coinPrices.push(el.rate_high)
-                //     coinDates.push(el.time_open.slice(0,10))
-                // })
-            let d3Data = createD3Data(formatDates(coinDates), coinPrices);
-            const maxPrice = Math.max(...coinPrices);
-            drawGraph(d3Data, maxPrice, coin);
-    //   });
+        axios({
+            method: 'get',
+            url: `https://rest.coinapi.io/v1/exchangerate/${currentCoin}/USD/history?period_id=${period_id}&time_start=${time_start}&time_end=${time_end}`,//&limit=${limit}`,
+            headers: {
+                // 'X-CoinAPI-Key': '9BE11048-8939-47D8-8CEC-22E693B66137'
+                'X-CoinAPI-Key': 'B1C87260-00AD-44BC-8EFD-02DF3C6984A5'
+            },
+            data: {
+            }
+        }).then(apiObject => {
+        let coinPrices = []; //[30000, 38000, 41000, 45000, 23000, 32000];
+        let coinDates = []; //['2015-04-01', '2016-09-01','2016-10-02', '2016-11-03', '2016-12-04', '2017-09-01'];
+            apiObject.data.forEach(el=>{
+                coinPrices.push(el.rate_high)
+                coinDates.push(el.time_open.slice(0,10))
+            })
+        let d3Data = createD3Data(formatDates(coinDates), coinPrices);
+        const maxPrice = Math.max(...coinPrices);
+        drawGraph(d3Data, maxPrice, coin);
+  });
 }
 
 function formatDates(coinDates){
@@ -61,9 +62,7 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
         .attr('width', width)
         .attr('height', height)
         .attr('id',"svg");
-    
     const yMax = maxPrice + maxPrice/10;
-
     var xScale = d3
         .scaleTime()
         .domain([data[0][0], data[data.length-1][0]])
@@ -101,7 +100,7 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
     // creates x-axis
     svg.append("g")
         .attr("transform", "translate(250," + 625 + ")")
-        .call(d3.axisBottom(xScale).ticks(d3.timeYear)) //change to timeYear if need
+        .call(d3.axisBottom(xScale).ticks(d3.timeMonth)) //change to timeYear if need
         .style("color", "E1D9D1"); 
     // creates y-axis
     svg.append("g")
@@ -140,18 +139,10 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
         .text('Price ($USD)')
         .attr('font-weight', 700);
 }
-const eth = document.querySelector('#ETH');
-eth.addEventListener('click', generateGraph('BTC-TEST'))
-window.eth = eth;
-
-// document.getElementById('ETH').addEventListener("click", generateGraph('ETH'));
-// document.getElementById('BTC').addEventListener("click", generateGraph('BTC'));
-
-
-
-
+// }
 // > formatDate = d3.time.format("%b-%Y")
 // > formatDate(parseDate('2003-01-01'))
 // "Jan-2003"
 // do this part on display?
 
+generateGraph();
