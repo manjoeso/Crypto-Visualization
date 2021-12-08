@@ -9,27 +9,27 @@ function generateGraph(coin){
     let time_end = date;  // current date
     let limit = "1000";
     let currentCoin = coin
-        // axios({
-        //     method: 'get',
-        //     url: `https://rest.coinapi.io/v1/exchangerate/${currentCoin}/USD/history?period_id=${period_id}&time_start=${time_start}&time_end=${time_end}`,//limit=${limit}`,
-        //     headers: {
-        //         'X-CoinAPI-Key': '9BE11048-8939-47D8-8CEC-22E693B66137'
-        //         // 'X-CoinAPI-Key': 'B1C87260-00AD-44BC-8EFD-02DF3C6984A5'
-        //     },
-        //     data: {
-        //     }
-        // }).then(apiObject => {
-        let coinPrices = [25000, 30000, 38000, 40000, 45000, 23000, 32000];
-        let coinDates = ['2015-01-01','2015-04-01', '2016-09-01','2016-10-02', '2016-11-03', '2016-12-04', '2017-09-01'];
+        axios({
+            method: 'get',
+            url: `https://rest.coinapi.io/v1/exchangerate/${currentCoin}/USD/history?period_id=${period_id}&time_start=${time_start}&time_end=${time_end}`,//limit=${limit}`,
+            headers: {
+                'X-CoinAPI-Key': '9BE11048-8939-47D8-8CEC-22E693B66137'
+                // 'X-CoinAPI-Key': 'B1C87260-00AD-44BC-8EFD-02DF3C6984A5'
+            },
+            data: {
+            }
+        }).then(apiObject => {
+        let coinPrices = [];// [25000, 30000, 38000, 40000, 45000, 23000, 32000];
+        let coinDates = [];//['2015-01-01','2015-04-01', '2016-09-01','2016-10-02', '2016-11-03', '2016-12-04', '2017-09-01'];
         // let coinDates = [0, 1, 2, 3, 4, 5, 6]
-            // apiObject.data.forEach(el=>{
-            //     coinPrices.push(el.rate_high)
-            //     coinDates.push(el.time_open.slice(0,10))
-            // })
+            apiObject.data.forEach(el=>{
+                coinPrices.push(el.rate_high)
+                coinDates.push(el.time_open.slice(0,10))
+            })
         let d3Data = createD3Data(formatDates(coinDates), coinPrices);
         const maxPrice = Math.max(...coinPrices);
         drawGraph(d3Data, maxPrice, coin)
-//   });
+  });
 }
 
 function formatDates(coinDates){
@@ -76,7 +76,7 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
     // creates x-axis
     svg.append("g")
         .attr("transform", "translate(150," + 775 + ")")
-        .call(d3.axisBottom(x).ticks(d3.timeYear)) //change to timeYear if need
+        .call(d3.axisBottom(x).ticks(d3.timeDay)) //change to timeYear if need
         .style("color", "E1D9D1"); 
     // creates y-axis
     svg.append("g")
@@ -97,7 +97,20 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
         .attr("cy", function (d) { return y(d[1]); } ) // y-coordinate of data point
         .attr("r", 2)
         .attr("transform", "translate(" + 150 + "," + 108.5 + ")")
-        .style("fill", "#39FF14");
+        .style("fill", "#39FF14")
+        // .on('mouseover', function(d){
+        //     div.transition()
+        //         .duration(200)
+        //         .style('opacity', .9);
+        //     div	.html(formatTime(d.date) + "<br/>"  + d.close)	
+        //         .style("left", (d3.event.pageX) + "px")		
+        //         .style("top", (d3.event.pageY - 28) + "px");	
+        // })
+        // .on("mouseout", function(d) {		
+        //     div.transition()		
+        //         .duration(500)		
+        //         .style("opacity", 0);	
+        // });
         // .curve(d3.curveMonotoneX)
     svg.append("path")
         .datum(data) 
@@ -145,6 +158,11 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
         .style('fill', '#E1D9D1')
         .text('Price ($USD)')
         .attr('font-weight', 700);
+
+    // add tool tip
+    // var div = d3.select("svg").append("div")	
+    //     .attr("class", "tooltip")				
+    //     .style("opacity", 0);
 }
     
 // > formatDate = d3.time.format("%b-%Y")
