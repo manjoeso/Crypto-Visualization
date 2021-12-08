@@ -1,24 +1,30 @@
-#main-header {
+/* #main-header {
   display: flex;
   justify-content: left;
   margin-left: 2%;
   color: white;
   font-size: 28pt;
-}
+} */
 #root {
   background-color: black;
-  height: auto;
-  width: auto;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Roboto Mono', monospace;
 }
 
 #sidebar {
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 100vh;
+  border-right: 4pt solid whitesmoke;
 }
+
 h1 {
-  font-family: cursive;
+  padding-top: 25px; 
+  text-align: center;
+  font-size: 34pt;
+  color: white;
 }
 
 h2 {
@@ -37,12 +43,12 @@ li {
   font-weight: bold;
   list-style: none;
   color:green;
-  background-color: whitesmoke;
-  margin: 8%;
-  border: 2pt solid white;
+  margin: 18% 20% 18% 20%;
+  border: 3px dashed white;
   text-align: center;
-  width: auto;
+  width: 130px;
   height: auto;
+  padding: 15px;
 }
 
 /* nav {
@@ -56,19 +62,16 @@ nav div {
   float: right;
 } */
 .window{
-  display:flex;
+  display: flex;
   justify-content: space-between;
   background-color: black;
 }
 
-div.window{
-  margin: 1%;
-  background-color: black;
-}
 
 #sidebar {
   width: 24%;
   background-color: black;
+  margin-left: 1%;
 }
 
   /* width: 75%;
@@ -98,4 +101,10 @@ p {
 .rightbar {
   width: 20%;
   /* border: 1pt solid #39FF14; */
+}
+
+.coin-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
