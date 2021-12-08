@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if(li.getAttribute('id') === "DOGE"){
                 generateGraph(li.getAttribute('id'), dogeData)
             }
-            
         })
     })
 })

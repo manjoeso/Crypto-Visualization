@@ -30,7 +30,7 @@ function generateGraph(coin, data){
         const maxPrice = Math.max(...coinPrices);
         console.log(maxPrice)
 
-        drawGraph(d3Data, maxPrice, coin)
+        drawGraph(d3Data, maxPrice, coin, data)
 //   });
 }
 
@@ -50,17 +50,17 @@ function createD3Data(coinDates, coinPrices){
     return d3Data;
 }
 
-function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph in beginning to add new graph
+function drawGraph(data, maxPrice, coin, newData){ // need to somehow "delete" the graph in beginning to add new graph
 
     // const width = 1500;
     // const height = 1000;
     const yMax = maxPrice + maxPrice/10;
-
+    
     const margin = { top: 40, right: 80, bottom: 60, left: 50 },
         width = 1500 - margin.left - margin.right,
         height = 1000 - margin.top - margin.bottom;
     // Parse the date / time
-    const parseDate = d3.timeFormat("%m/%d/%y"),
+    const parseDate = d3.timeParse("%Y-%m-%d"),
         formatDate = d3.timeFormat("%b %d"),
         formatMonth = d3.timeFormat("%b");
 
@@ -72,7 +72,7 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
         .nice();
     var y = d3
         .scaleLinear()
-        .domain([0, yMax])
+        // .domain([0, yMax])
         .range([height/1.5, 0])
         .nice();    
     
@@ -84,8 +84,8 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
         .curve(d3.curveCardinal);
 
     var valueLine = d3.line()
-        .x(function(d) { return x(d[0]); }) 
-        .y(function(d) { return y(d[1]); });
+        .x(function(d) { return x(d.date); }) 
+        .y(function(d) { return y(d.price); });
 
     const svg = d3
         .select('#d3-display')
@@ -101,61 +101,180 @@ function drawGraph(data, maxPrice, coin){ // need to somehow "delete" the graph 
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(150," + 708.5 + ")")
-        .call(d3.axisBottom(x).tickFormat(formatMonth))//ticks(d3.timeYear))  **// NEED TO CHANGE BACK HERE POTENTIALLY
-        .style("color", "E1D9D1"); 
+        .call(d3.axisBottom(x).tickFormat(formatMonth))
+        //ticks(d3.timeYear))  **// NEED TO CHANGE BACK HERE POTENTIALLY
+        .style("color", "E1D9D1");
 
     // creates y-axis
     svg.append("g")
         .attr("class", "y axis")
         .attr("transform", "translate(150," + 108.5 + ")")
         .call(d3.axisLeft(y))
-        .style("color", "E1D9D1"); 
+        .style("color", "E1D9D1");
         
     // ------------------------------------------------
     // append data
-    svg.append('g')
-        .selectAll("dot")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) { return x(d[0]); } ) // x-coordinate of data point
-        .attr("cy", function (d) { return y(d[1]); } ) // y-coordinate of data point
-        .attr("r", 2)
-        .attr("transform", "translate(" + 150 + "," + 108.5 + ")")
-        .style("fill", "#39FF14")
-        // .on('mouseover', function(d){
-        //     div.transition()
-        //         .duration(200)
-        //         .style('opacity', .9);
-        //     div	.html(formatTime(d.date) + "<br/>"  + d.close)	
-        //         .style("left", (d3.event.pageX) + "px")		
-        //         .style("top", (d3.event.pageY - 28) + "px");	
-        // })
-        // .on("mouseout", function(d) {		
-        //     div.transition()		
-        //         .duration(500)		
-        //         .style("opacity", 0);	
-        // });
-        // .curve(d3.curveMonotoneX)
-    svg.append("path")
-        .datum(data) 
-        .attr("class", "line") 
-        .attr("transform", "translate(" + 150 + "," + 108.5 + ")")
-        .attr("d", valueLine)
-        .style("fill", "none")
-        .style("stroke", "#39FF14")
-        .style("font-weight", "bold")
-        .style("stroke-1", "2")
-        // .on('mouseover', function (d, i) {
-        //     d3.select(this).transition()
-        //         .duration('50')
-        //         .attr('opacity', '.6')
-        // });
-    // ---------------------------------------------------------------------
     createLabels(svg, height, width, coin, margin)
+    appendData(newData, parseDate, x, y, svg, area, valueLine, width, height, formatDate);
 }
 
-function appendData(){}
+function appendData(data, parseDate, x, y, svg, area, valueLine, width, height, formatDate){
+    data.forEach((d) => {
+        d.date = d.time_period_start.slice(0,10)
+        d.date = parseDate(d.date);
+        d.price = Number(d.rate_high);
+    });
+
+    x.domain(
+        d3.extent(data, (d) => {return d.date;})
+    )
+
+    y.domain([
+        0,
+        d3.max(data, (d) => { return d.price; }),
+    ]);
+
+    svg
+        .select(".x.axis") 
+        .transition()
+        .duration(500)
+        .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b")));
+    svg
+        .select(".y.axis") 
+        .transition()
+        .duration(500)
+        .call(d3.axisLeft(y));
+
+    const areaPath = svg
+        .append("path")
+        .data([data])
+        .attr("class", "area")
+        .attr("d", area)
+        .attr("transform", "translate(150,108.5)")
+        .transition()
+        .duration(1000)
+        // .style("stroke", "white")
+        // .style("font-weight", "bold")
+        // .style("stroke-1", "2")
+       
+    const linePath = svg
+        .append("path")
+        .data([data])
+        .attr("class", "line")
+        .attr("d", valueLine)
+        .style("stroke", "#39FF14")
+        .attr("transform", "translate(" + 150 + "," + 108.5 + ")")
+        .style("font-weight", "bold")
+        .style("stroke-1", "2");
+
+    const pathLength = linePath.node().getTotalLength();
+
+    linePath // graph doesnt display with this?
+        // .attr("stroke-dasharray", pathLength)
+        // .attr("stroke-dashoffset", pathLength)
+        // .attr("stroke-width", 3)
+        // .transition()
+        // .duration(1000)
+        // .attr("stroke-width", 0)
+        // .attr("stroke-dashoffset", 0);
+
+    const focus = svg
+        .append("g")
+        .attr("class", "focus")
+        .style("display", "none");
+
+    // append the x line
+    focus
+        .append("line")
+        .attr("class", "x")
+        .attr("style", "white")
+        .style("stroke-dasharray", "3,3")
+        .style("opacity", 0.5)
+        .attr("y1", 0)
+        .attr("y2", height);
+
+    // append the y line
+    focus
+        .append("line")
+        .attr("class", "y")
+        .style("stroke-dasharray", "3,3")
+        .style("opacity", 0.5)
+        .attr("x1", width)
+        .attr("x2", width);
+
+    // append the circle at the intersection
+    focus
+        .append("circle")
+        .attr("class", "y")
+        .style("fill", "none")
+        .attr("r", 4); // radius
+
+    // place the value at the intersection
+    focus.append("text").attr("class", "y1").attr("dx", 8).attr("dy", "-.3em").style("fill", "#E1D9D1");
+    focus.append("text").attr("class", "y2").attr("dx", 8).attr("dy", "-.3em").style("fill", "#E1D9D1");
+
+    // place the date at the intersection
+    focus.append("text").attr("class", "y3").attr("dx", 8).attr("dy", "1em").style("fill", "#E1D9D1");
+    focus.append("text").attr("class", "y4").attr("dx", 8).attr("dy", "1em").style("fill", "#E1D9D1");
+
+    // ==================================================
+    function mouseMove(event) {
+        const bisect = d3.bisector((d) => d.date).left,
+        x0 = x.invert(d3.pointer(event, this)[0]),
+        i = bisect(data, x0, 1),
+        d0 = data[i - 1],
+        d1 = data[i],
+        d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+
+        focus
+            .select("circle.y")
+            .attr("transform", "translate(" + x(d.date) + "," + y(d.price) + ")");
+
+        focus
+            .select("text.y1")
+            .attr("transform", "translate(" + x(d.date) + "," + y(d.price) + ")")
+            .text(d.price);
+
+        focus
+            .select("text.y2")
+            .attr("transform", "translate(" + x(d.date) + "," + y(d.price) + ")")
+            .text(d.price);
+
+        focus
+            .select("text.y3")
+            .attr("transform", "translate(" + x(d.date) + "," + y(d.price) + ")")
+            .text(formatDate(d.date));
+
+        focus
+            .select("text.y4")
+            .attr("transform", "translate(" + x(d.date) + "," + y(d.price) + ")")
+            .text(formatDate(d.date));
+
+        focus
+            .select(".x")
+            .attr("transform", "translate(" + x(d.date) + "," + y(d.price) + ")")
+            .attr("y2", height - y(d.price));
+
+        focus
+            .select(".y")
+            .attr("transform", "translate(" + width * -1 + "," + y(d.price) + ")")
+            .attr("x2", width + width);
+    }
+
+    svg
+        .append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .style("fill", "none")
+        .style("pointer-events", "all")
+        .on("mouseover", () => {
+            focus.style("display", null);
+        })
+        .on("mouseout", () => {
+            focus.style("display", "none");
+        })
+        .on("touchmove mousemove", mouseMove);
+};
 
 function createLabels(svg, height, width, coin, margin){
     // title

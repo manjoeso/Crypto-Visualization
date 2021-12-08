@@ -104,3 +104,9 @@ div.tooltip {
   border-radius: 8px;			
   pointer-events: none;			
 }
+
+.area {
+  background-color: white;
+  opacity: .5;
+  z-index: 1;
+}
