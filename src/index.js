@@ -1,5 +1,5 @@
 // import Example from "./scripts/example";
-import {generateGraph, formatDates, createD3Data, drawGraph, createLabels} from "./scripts/graph.js";
+import {generateGraph, formatDates, drawGraph, createLabels} from "./scripts/graph.js";
 
 import {btcData} from "../coin_data/btc.js"
 import {ethData} from "../coin_data/eth.js"

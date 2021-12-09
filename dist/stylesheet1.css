@@ -16,7 +16,7 @@
 h1 {
   padding-top: 25px; 
   text-align: center;
-  font-size: 34pt;
+  font-size: 2em;
   color: white;
 }
 
@@ -55,6 +55,7 @@ li {
   width: 24%;
   background-color: black;
   margin-left: 1%;
+  /* background-color: (7, 15, 21) */
 }
 
   /* width: 75%;
@@ -109,4 +110,11 @@ div.tooltip {
   background-color: white;
   opacity: .5;
   z-index: 1;
+}
+
+line.x,
+line.y,
+circle.y {
+  stroke:red;
+  
 }
