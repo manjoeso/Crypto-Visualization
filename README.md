@@ -32,7 +32,7 @@ In addition, this project will include:
  
 ## Wireframes
 
-![image](https://user-images.githubusercontent.com/63963324/144649859-31922653-4e00-4418-9555-f9da524068de.png)
+![image](https://user-images.githubusercontent.com/63963324/145434941-f5aab305-e3bf-4369-a407-9c17534c9d56.png)
  
 ## Technologies, Libraries APIs 
 
