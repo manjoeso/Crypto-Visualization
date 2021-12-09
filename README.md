@@ -25,10 +25,6 @@ current date.
 will update the display chart.
 - Hover over the line graph, to reveal data incuding the price
 and date intersection point.
-
-In addition, this project will include: 
-
-- A production README.
  
 ## Display
 
