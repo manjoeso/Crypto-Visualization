@@ -51,11 +51,3 @@ what the site's functionality is.
 1. A public data API (https://coinmarketcap.com/api/) to import live and hisotrical data from a crypto currency exchange.
 2. Webpack to bundle and transpile the source JavaScript code.
 3. D3 API to bind data from API, and create the chart displaying the data.
-
-## Implementation Timeline 
-
-- Friday Afternoon & Weekend: Layout basic HTML structure of the page, populate with bare content. Implement D3 to get charts working and extablish format. Get API set up and working.
-- Monday: Get JS code and CSS working together, implement page functionality
-- Tuesday: Continue working on JS and CSS code
-- Wednesday: Finish CSS touches, add personality and details
-- Thursday Morning: If time permits, add bonus functionality
