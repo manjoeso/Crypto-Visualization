@@ -4,17 +4,16 @@
 
 This project will be a datavisualization of the 
 top 5 crypto currencies: Bitcoin, Etherium, Cardano,
-Tether, and Solana. There will be a clickable list of
-these 5 currencies as a bar on the right side of the 
+Solana, and Dogecoin. There will be a clickable list of
+these 5 currencies as a bar on the left side of the 
 page. When one of the currencies is clicked, the display
 in the middle will be updated with a chart for that 
 specific coin.
 
 The chart will be a line graph displaying time on the
-x-axis, and price (in $USD) on the y-axis. The time will 
-span from when the coin was created to the current date. 
-When you hover over the line graph, it will show the max 
-price and date of the max price.
+x-axis, and price (in $USD) on the y-axis. When you 
+hover over the line, it will show display a tool tip
+of the selected date and the corresponding price.
 
 ## Functionality and MVPs
 
@@ -24,22 +23,11 @@ In Crypto Data Visualization, users will be able to:
 current date.
 - Select between 5 crypto currencies, which
 will update the display chart.
-- Hover over the line graph, to reveal data including the all-time 
-max price of the coin, and the date it occurred.
-
-### Bonus Functionality 
-- Make some sort of animation when clicking 
-the icon of the coin
-- Change color (maybe music) when the coin is 
-uptrending or downtrending
-- Add a calculator (that will be visualized) 
-that takes user input answering the question "If you invested $X
-money in Y coin on Z date", returning the possible gains.
+- Hover over the line graph, to reveal data incuding the price
+and date intersection point.
 
 In addition, this project will include: 
 
-- A simple paragraph describing some background for crypto, and
-what the site's functionality is.
 - A production README.
  
 ## Wireframes
