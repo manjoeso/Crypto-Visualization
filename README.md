@@ -30,7 +30,7 @@ In addition, this project will include:
 
 - A production README.
  
-## Wireframes
+## Display
 
 ![image](https://user-images.githubusercontent.com/63963324/145434941-f5aab305-e3bf-4369-a407-9c17534c9d56.png)
  
