@@ -9,7 +9,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
   border-right: 4pt solid whitesmoke;
 }
 

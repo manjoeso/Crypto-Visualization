@@ -3,14 +3,10 @@ const axios = require('axios');
 function generateGraph(coin, data){
     let date = new Date(); // returns date object with current date and time 
     date = date.toISOString();
-    // let options = {period_id: "1DAY", time_start: ,time_end: , limit: }
-    let period_id = "1DAY"
-    let time_start = "2021-11-15T00:00:00" 
-    let time_end = date;  // current date
-    let limit = "1000";
+    // let options = {period_id: "1DAY", time_start: "2021-11-15T00:00:00" ,time_end: date, limit: "1000" }
         // axios({
         //     method: 'get',
-            // url: `https://rest.coinapi.io/v1/exchangerate/${coin}/USD/history?period_id=${period_id}&time_start=${time_start}&time_end=${time_end}`,//limit=${limit}`,
+            // url: `https://rest.coinapi.io/v1/exchangerate/${coin}/USD/history?period_id=${options.period_id}&time_start=${options.time_start}&time_end=${options.time_end}`,//limit=${options.limit}`,
         //     headers: {
         //         'X-CoinAPI-Key': '9BE11048-8939-47D8-8CEC-22E693B66137'
         //         // 'X-CoinAPI-Key': 'B1C87260-00AD-44BC-8EFD-02DF3C6984A5'
@@ -109,11 +105,9 @@ function appendData(data, parseDate, x, y, svg, area, valueLine, width, height, 
             d.price = Number(Math.round((d.rate_high)*100000)/100000);
         }
     });
-
     x.domain(
         d3.extent(data, (d) => {return d.date;})
     )
-
     y.domain([0,d3.max(data, (d) => { return d.price; }),
     ]);
 
