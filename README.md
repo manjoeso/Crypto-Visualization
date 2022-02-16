@@ -20,8 +20,8 @@ and date intersection point.
  
 ## Display
 
-![image](https://user-images.githubusercontent.com/63963324/154330526-7e2cb541-7cb5-4460-b7e5-c01563f53e00.png)
- 
+![image](https://user-images.githubusercontent.com/63963324/154330742-61f89b58-feae-4d50-b5dd-7893511a2d0c.png)
+
 ## Technologies, Libraries APIs 
 
 1. A public data API (https://coinmarketcap.com/api/) to import live and hisotrical data from a crypto currency exchange.
