@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(whitesmoke 0%, #0451cf 100%); ;
+  background: linear-gradient(whitesmoke 0%, #3471d3 100%); ;
   border-radius: 0px 20px 20px 0px;
 }
 
@@ -24,10 +24,20 @@
 
 #sidebar {
   width: 15vw;
+  height: 100vh;
   background-color: #0451cf;
   border-left: 1px solid white;
-  background: linear-gradient(whitesmoke 0%, #0451cf 100%); ;
+  background: linear-gradient(whitesmoke 0%, #3471d3 100%); ;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 0px 0px 20px;
 
+}
+
+#sidebar p {
+  margin: 10%;
+  font-size: 22px;
+  height: 65vh;
 }
 /* 
 .svg-content {
@@ -105,6 +115,36 @@ div.tooltip {
 line.x,
 line.y,
 circle.y {
-  stroke:red;
+  stroke:white;
   
+}
+
+.links {
+  height: 35vh;
+  display: flex;
+  align-items: flex-end;
+  margin: 30px auto;
+}
+
+.linkedin img {
+  filter: invert(1);
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
+
+.github img {
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
+
+.angel img {
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
 }

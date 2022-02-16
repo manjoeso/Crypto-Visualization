@@ -125,18 +125,18 @@ function appendData(data, parseDate, x, y, svg, area, valueLine, width, height, 
         .duration(500)
         .call(d3.axisLeft(y));
 
-    const areaPath = svg
-        .append("path")
-        .data([data])
-        .attr("class", "area")
-        .attr("d", area)
-        .attr("transform", "translate(150,108.5)")
-        .transition()
-        .duration(1000)
-        .style("stroke", "")
-        .style("font-weight", "bold")
-        .style("stroke-1", "2")
-        .style("background", "red");;
+    // const areaPath = svg
+    //     .append("path")
+    //     .data([data])
+    //     .attr("class", "area")
+    //     .attr("d", area)
+    //     .attr("transform", "translate(150,108.5)")
+    //     .transition()
+    //     .duration(1000)
+    //     .style("stroke", "")
+    //     .style("font-weight", "bold")
+    //     .style("stroke-1", "2")
+    //     .style("background", "transparent");;
 
        
     const linePath = svg
