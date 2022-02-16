@@ -24,6 +24,7 @@ function generateGraph(coin, data){
         drawGraph(maxPrice, coin, data)
 //   });
 }
+
 function formatDates(coinDates){
     let dateNum = [];
     for(let i = 0; i < coinDates.length; i++){
@@ -32,7 +33,7 @@ function formatDates(coinDates){
     return coinDates;
 }
 
-function drawGraph(maxPrice, coin, newData){ // need to somehow "delete" the graph in beginning to add new graph
+function drawGraph(maxPrice, coin, newData){ 
     const yMax = maxPrice + maxPrice/10;
     
     const margin = { top: 40, right: 80, bottom: 60, left: 50 },
@@ -57,7 +58,8 @@ function drawGraph(maxPrice, coin, newData){ // need to somehow "delete" the gra
         .x((d) => { return x(d.date); })
         .y0(height)
         .y1((d) => { return y(d.price); })
-        .curve(d3.curveCardinal);
+        .curve(d3.curveCardinal)
+        
 
     var valueLine = d3.line()
         .x(function(d) { return x(d.date); }) 
@@ -71,7 +73,8 @@ function drawGraph(maxPrice, coin, newData){ // need to somehow "delete" the gra
         .classed("svg-content", true)
         .attr('id',"svg")
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
 
         createAxes(svg, x, y, formatMonth);
         createLabels(svg, height, width, coin, margin)
@@ -133,15 +136,17 @@ function appendData(data, parseDate, x, y, svg, area, valueLine, width, height, 
         .style("stroke", "")
         .style("font-weight", "bold")
         .style("stroke-1", "2")
+        .style("background", "red");;
+
        
     const linePath = svg
         .append("path")
         .data([data])
         .attr("class", "line")
         .attr("d", valueLine)
-        .style("stroke", "#39FF14")
+        .style("stroke", "#0451cf")
         .attr("transform", "translate(" + 150 + "," + 108.5 + ")")
-        .style("font-weight", "bold")
+        .style("font-weight", "bolder")
         .style("stroke-1", "2");
 
     const pathLength = linePath.node().getTotalLength();
@@ -179,7 +184,7 @@ function appendData(data, parseDate, x, y, svg, area, valueLine, width, height, 
         .style("solid", "3,3")
         .style("opacity", 0.5)
         .attr("x1", width)
-        .attr("x2", width)
+        .attr("x2", width) 
         .attr("transform", "translate(" + 0 + "," + 108.5 + ")");
 
     // append the circle at the intersection
@@ -226,7 +231,7 @@ function appendData(data, parseDate, x, y, svg, area, valueLine, width, height, 
         focus
             .select(".y")
             .attr("transform", "translate(" + width * -1 + "," + y(d.price) + ")")
-            .attr("x2", width + width);
+            .attr("x2", width + width - width/5);
     }
 
     svg
