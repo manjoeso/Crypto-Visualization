@@ -4,6 +4,7 @@
   height: 100vh;
   width: 100vw;
   font-family: 'Roboto Mono', monospace;
+  overflow: hidden;
 }
 
 .window {
@@ -19,11 +20,11 @@
 
 .svg-container {
   height: 100vh;
-  width: 70vw;
+  width: 65vw;
 }
 
 #sidebar {
-  width: 15vw;
+  width: 20vw;
   height: 100vh;
   background-color: #0451cf;
   border-left: 1px solid white;
@@ -75,7 +76,7 @@
 .coin-type {
   margin: 2%;
   width: 75%;
-  font-size: 18pt;
+  font-size: 14px;
   font-weight: bold;
   list-style: none;
   color:green;
