@@ -36,7 +36,7 @@
 
 #sidebar p {
   margin: 10%;
-  font-size: 22px;
+  font-size: 16px;
   height: 65vh;
 }
 /* 
@@ -50,7 +50,7 @@
   align-items: center;
   height: 10%;
   /* width: %; */
-  font-size: 2em;
+  font-size: 22px;
   /* margin-bottom: 50px; */
   text-align: center;
 }
